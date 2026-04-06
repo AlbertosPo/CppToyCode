@@ -170,7 +170,82 @@ public:
 		}
 	}
 
+	void PrintRightLeftStars(int stars_in , int spaces_in)
+	{
+
+		for (int i = 0; i < stars_in; i++)
+		{
+			std::cout << "*";
+		}
+		for (int j = 0; j < spaces_in; j++)
+		{
+			std::cout << " ";
+		}
+		for (int i = 0; i < stars_in; i++)
+		{
+			std::cout << "*";
+		}
+		std::cout << std::endl;
+	}
+
+	void RightLeftTriangle()
+	{
+		int spaces = 2 * base;
+		
+		for (int i = 0; i <= base ; i++)
+		{
+			PrintRightLeftStars(i , spaces);
+			spaces = spaces - 2;
+		}
+		spaces = spaces + 2;
+		for (int i = (base-1); i > 0; i--)
+		{
+			spaces = spaces + 2;
+			PrintRightLeftStars(i, spaces);
+		}
+	}
+
+	void PrintLeftRightStars(int stars_in , int spaces_in)
+	{
+		for (int i = 0; i < spaces_in; i++)
+		{
+			std::cout << " ";
+		}
+		for (int i = 0; i < stars_in; i++)
+		{
+			std::cout << "*";
+		}
+		for (int i = 1; i < stars_in; i++)
+		{
+			std::cout << "*";
+		}
+
+		std::cout << std::endl;
+	}
+
+	void LeftRightTriangle()
+	{
+		int spaces = base;
+
+		
+		for (int i = 0; i <= base; i++)
+		{
+			PrintLeftRightStars(i,spaces);
+			spaces--;
+		}
+
+
+		spaces=spaces+2;
+		for (int i = (base-1); i >0; i--)
+		{
+			PrintLeftRightStars(i, spaces);
+			spaces++;
+		}
+	}
+
 };
+
+
 
 
 int InputGetter()
@@ -209,6 +284,14 @@ void ShowSomeTriangle(Triangle obj_in, std::string which)
 		obj_in.UpsideDownPrintTriangle();
 		obj_in.NormalPrintTriangle(true);
 	}
+	else if (which == "RightLeft")
+	{
+		obj_in.RightLeftTriangle();
+	}
+	else if (which == "LeftRight")
+	{
+		obj_in.LeftRightTriangle();
+	}
 
 }
 
@@ -232,6 +315,8 @@ int main()
 		std::cout << "4) left" << std::endl;
 		std::cout << "5) combUpDown" << std::endl;
 		std::cout << "6) combDownUp" << std::endl;
+		std::cout << "7) RightLeft" << std::endl;
+		std::cout << "8) LeftRight" << std::endl;
 		std::cout << "To Exit type exit" << std::endl;
 		std::cin >> choice;
 
